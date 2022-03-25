@@ -1,8 +1,6 @@
 import { file } from "./lib/file.js";
 
-const status = await file.create('users', 'petras.json', {
-    name: 'Petras'
-});
+const status = await file.create('users', 'petras.json', false);
 
 console.log(status);
 

@@ -1,3 +1,5 @@
+import { file } from './lib/file.js';
+
 // const users = ['Petras', 'Maryte', 'Jonas', 'Ona'];
 
 // for (let i = 0; i < users.length; i++) {
@@ -25,14 +27,14 @@ const users = [
     { name: 'Jonas', age: 66, isMarried: false },
     { name: 'Ona', age: 54, isMarried: true },
 ];
-
-let i = 0;
-for (const user of users) {
-    const married = user.isMarried ? '' : 'not ';
-    const fileName = user.name.toLowerCase() + '.json'  
-    console.log(`${++i}) Student ${user.name} is ${user.age} years old and is
-     ${married}married (${fileName}).`);
-}
+// sprendimas 3
+// let i = 0;
+// for (const user of users) {
+//     const married = user.isMarried ? '' : 'not ';
+//     const fileName = user.name.toLowerCase() + '.json'  
+//     console.log(`${++i}) Student ${user.name} is ${user.age} years old and is
+//      ${married}married (${fileName}).`);
+// }
 
 // 1) Student Petras is 99 years old and is married.
 // 2) Student Maryte is 87 years old and is not married.
@@ -40,3 +42,12 @@ for (const user of users) {
 // kiekviena user objekta irastyi i atskira faila, kurie turetu buti 
 // talpinami `.data/users' folderyje. Failo pavadinimas
 // attitinka sablona `vardenis.json` (mazosios raides)
+// sprendimas 4
+let i = 0;
+for (const user of users) {
+    const fileName = user.name.toLowerCase() + '.json';
+    const status = await file.create('users', fileName, user);   
+    console.log(fileName, status);
+}
+
+console.log('FINISH');

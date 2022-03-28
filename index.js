@@ -1,11 +1,19 @@
 import { file } from "./lib/file.js";
 
-const status = await file.create('users', 'petras.json', false);
+const createFileStatus = await file.create('users', 'petras.json', {
+    name: 'Petras'
+});
+console.log(createFileStatus);
 
-console.log(status);
+const readFileStatus1 = await file.read('users', 'petras.json');
+console.log(readFileStatus1);
 
-file.read();
 file.update();
-file.read();
+
+const readFileStatus2 = await file.read('users', 'petras.json');
+console.log(readFileStatus2);
+
 file.delete();
-file.read();
+
+const readFileStatus3 = await file.read('users', 'petras.json');
+console.log(readFileStatus3);
